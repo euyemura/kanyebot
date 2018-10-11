@@ -1,25 +1,28 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import Input from "./Input.js"
+import GoodRobot from "./GoodRobot.js"
+import Kanyebot from "./Kanyebot.js"
+import BadRobot from "./BadRobot.js"
 class App extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            message: 'd'
+
+
+        }
+    }
+    updateMessage(message){
+        this.setState({message: message})
+    }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div>
+        <Input message = {this.state.message} handleChange= {this.updateMessage.bind(this)}/>
+        <GoodRobot message = {this.state.message}/>
+        <Kanyebot message = {this.state.message}/>
+        <BadRobot message = {this.state.message}/>
       </div>
     );
   }
